@@ -52,7 +52,8 @@ class ViewController: UIViewController {
                 
                 if error == nil {
                     //Signup Successful
-                
+                    self.performSegueWithIdentifier("login", sender: self)
+                    
                 } else {
                     
                     if let errorString = error!.userInfo["error"] as? NSString {
@@ -74,6 +75,8 @@ class ViewController: UIViewController {
                         
                         if user != nil {
                             // Logged In!
+                            self.performSegueWithIdentifier("login", sender: self)
+
                         } else {
                             print(error)
                             self.displayAlert("Failed Signup", message: "Please try again later")
@@ -85,11 +88,6 @@ class ViewController: UIViewController {
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-
     @IBAction func login(sender: AnyObject) {
         
         if signupActive {
@@ -105,13 +103,6 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func displayAlert(title: String, message: String) {
         if #available(iOS 8.0, *) {
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
@@ -124,4 +115,21 @@ class ViewController: UIViewController {
             // Fallback on earlier versions
         }
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        if PFUser.currentUser() != nil {
+            self.performSegueWithIdentifier("login", sender: self)
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
 }

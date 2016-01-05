@@ -5,6 +5,51 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
+        <!--User List-->
+        <scene sceneID="yhH-0G-Qat">
+            <objects>
+                <tableViewController title="User List" id="Tzp-FD-MJv" customClass="TableViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vEk-dY-StM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="DY7-fv-VWe">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DY7-fv-VWe" id="oMu-Cj-juH">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Tzp-FD-MJv" id="yRA-Nj-FCr"/>
+                            <outlet property="delegate" destination="Tzp-FD-MJv" id="yik-kB-mUC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="User List" id="xfO-gD-Ggi"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ud5-Gm-nL4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="390" y="-989"/>
+        </scene>
+        <!--User List-->
+        <scene sceneID="R6v-gF-yLe">
+            <objects>
+                <navigationController title="User List" id="mUZ-Pj-v01" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PMZ-zF-vVa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Tzp-FD-MJv" kind="relationship" relationship="rootViewController" id="851-7U-Zqh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ktD-gO-dAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-398" y="-1041"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="DVs-xl-Lde">
             <objects>
@@ -118,6 +163,7 @@
                         <outlet property="registeredText" destination="kBp-2Y-DM0" id="Oee-22-7Gn"/>
                         <outlet property="signupButton" destination="3g0-iW-Dgh" id="GD0-gf-ixh"/>
                         <outlet property="username" destination="xRl-QH-xym" id="O6h-11-FDc"/>
+                        <segue destination="mUZ-Pj-v01" kind="show" identifier="login" id="Ocd-J6-2WR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WBF-Y4-fij" userLabel="First Responder" sceneMemberID="firstResponder"/>
