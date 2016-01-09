@@ -17,12 +17,19 @@ class TableViewController: UITableViewController {
     
     var refresher: UIRefreshControl!
     
+    @IBAction func signOut(sender: AnyObject) {
+        PFUser.logOut()
+        var currentUser = PFUser.currentUser()
+        if currentUser == nil {print("Successfully logged out user")}
+    }
+    
     func refresh() {
         var query = PFUser.query()
         
         query?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
             
             if let users = objects {
+
                 
                 self.usernames.removeAll(keepCapacity: true)
                 self.userids.removeAll(keepCapacity: true)
@@ -38,7 +45,9 @@ class TableViewController: UITableViewController {
                             
                             var query = PFQuery(className: "followers")
                             
-                            query.whereKey("follower", equalTo: PFUser.currentUser()!.objectId!)
+//                            query.whereKey("follower", equalTo: PFUser.currentUser()!.objectId!)
+                            query.whereKey("follower", equalTo: "Z7sQWtwErt")
+
                             query.whereKey("following", equalTo: user.objectId!)
                             
                             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
